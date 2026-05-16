@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Multilingual Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>AI Multilingual Analyzer</h1>
+
+        <textarea id="textInput" placeholder="Enter text here..."></textarea>
+
+        <br><br>
+
+        <button onclick="analyzeText()">Analyze</button>
+
+        <div id="results">
+            <h3>Results</h3>
+
+            <p><strong>Detected Language:</strong>
+                <span id="language"></span>
+            </p>
+
+            <p><strong>Translated Text:</strong>
+                <span id="translation"></span>
+            </p>
+
+            <p><strong>Sentiment:</strong>
+                <span id="sentiment"></span>
+            </p>
+
+            <p><strong>Confidence:</strong>
+                <span id="confidence"></span>
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
