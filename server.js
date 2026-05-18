@@ -1,3 +1,14 @@
+const { BlobServiceClient } =
+require("@azure/storage-blob");
+
+const blobServiceClient =
+BlobServiceClient.fromConnectionString(
+    process.env.AZURE_STORAGE_CONNECTION_STRING
+);
+
+const containerName = "uploads";
+
+
 require("dotenv").config();
 
 const express = require("express");
@@ -11,10 +22,24 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 
-// Analyze Route
+
 app.post("/analyze", async (req, res) => {
 
     const text = req.body.text;
+
+const containerClient =
+    blobServiceClient.getContainerClient(containerName);
+
+const fileName =
+    `input-${Date.now()}.txt`;
+
+const blockBlobClient =
+    containerClient.getBlockBlobClient(fileName);
+
+await blockBlobClient.upload(
+    text,
+    Buffer.byteLength(text)
+);
 
     try {
 
